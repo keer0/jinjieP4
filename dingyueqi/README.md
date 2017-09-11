@@ -47,7 +47,7 @@
 ##完成状况
 1.遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的
 2.遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的
-3."The menu"还没完成
+3."The menu"完成检测默认隐藏、被点击后的显示隐藏
 4.`"Initial Entries"` 的测试用例，保证 `loadFeed` 函数被调用而且工作正常，即在 `.feed` 容器元素里面至少有一个 `.entry` 的元素。
 5.`"New Feed Selection"` 的测试用例，证当用 `loadFeed` 函数加载一个新源的时候内容会真的改变。
 4

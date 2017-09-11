@@ -66,17 +66,12 @@ $(function() {
           * 测试应该包含两个 expectation ： 党点击图标的时候菜单是否显示，
           * 再次点击的时候是否隐藏。
           */
-        it('The menu is hidden or show',function(){
-        	var menu = $(".menu-icon-link");
-        	menu.click(function(){
-        		if($(".menu-hidden")){
-        			expect(menu).toBeDefined();
-        		}else{
-        			expect(menu).toBeUndefined();
-        		}        		
-        	})
-        	
-        })
+        it('can be switched by the menu button', function () {
+		  $('.menu-icon-link').trigger('click');
+		  expect($('body').hasClass('menu-hidden')).not.toBeTrue();
+		  $('.menu-icon-link').trigger('click');
+		  expect($('body').hasClass('menu-hidden')).toBeFalse();
+		});
         
 	});
 	describe('Initial Entries', function () {
