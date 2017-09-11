@@ -29,6 +29,7 @@ $(function() {
 			allFeeds.forEach(function(feed){
 				expect(feed.url).toBeDefined();
             	expect(feed.url).not.toBe(null);
+            	expect(feed.url.length).not.toBe(0);
 			});
             
         });
@@ -40,6 +41,7 @@ $(function() {
 			allFeeds.forEach(function(feed){
 				expect(feed.name).toBeDefined();
             	expect(feed.name).not.toBe(null);
+            	expect(feed.name.length).not.toBe(0);
 			});
             
         });
@@ -54,12 +56,28 @@ $(function() {
          * 写一个测试用例保证菜单元素默认是隐藏的。你需要分析 html 和 css
          * 来搞清楚我们是怎么实现隐藏/展示菜单元素的。
          */
+        it('The menu is hidden',function(){
+        	var menuHidden = $(".menu-hidden");
+        	expect(menuHidden).toBeDefined();
+        })
 
          /* TODO:
           * 写一个测试用例保证当菜单图标被点击的时候菜单会切换可见状态。这个
           * 测试应该包含两个 expectation ： 党点击图标的时候菜单是否显示，
           * 再次点击的时候是否隐藏。
           */
+        it('The menu is hidden or show',function(){
+        	var menu = $(".menu-icon-link");
+        	menu.click(function(){
+        		if($(".menu-hidden")){
+        			expect(menu).toBeDefined();
+        		}else{
+        			expect(menu).toBeUndefined();
+        		}        		
+        	})
+        	
+        })
+        
 	});
 	describe('Initial Entries', function () {
 	    /* TODO:
@@ -72,13 +90,11 @@ $(function() {
 	    beforeEach(function (done) {
 	      originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
 	      jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000; //网不好，加载时间太长，总失败
-	      loadFeed(0, function () {
-	        done();
-	      });
+	      loadFeed(0,done);
 	    });
-	    it('can work', function (done) {
+	    it('can work', function () {
 	      expect($(".feed .entry").length).not.toBe(0);
-	      done();
+	      
 	    });
 	    afterEach(function() {
 	      jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
@@ -104,10 +120,10 @@ $(function() {
 	      });
 	
 	    });
-	    it('can be loaded correctly', function (done) {
+	    it('can be loaded correctly', function () {
 	
 	      expect($('.feed').html()).not.toEqual(feedOld);
-	      done();
+	     
 	    });
 	    afterEach(function() {
 	      jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
