@@ -67,11 +67,12 @@ $(function() {
           * 再次点击的时候是否隐藏。
           */
         it('can be switched by the menu button', function () {
-		  $('.menu-icon-link').trigger('click');
-		  expect($('body').hasClass('menu-hidden')).not.toBeTrue();
-		  $('.menu-icon-link').trigger('click');
-		  expect($('body').hasClass('menu-hidden')).toBeFalse();
+		  	$('.menu-icon-link').trigger('click'); // 第一次点击
+			expect($('body').hasClass('menu-hidden')).not.toBe(true); // 第一次点击后 .menu-hidden 就会移除，所以 “不该为true”
+		  	$('.menu-icon-link').trigger('click');//第二次点击
+		  	expect($('body').hasClass('menu-hidden')).toBe(true);// 第二次点击后 .menu-hidden 被添加，所以 “为true”
 		});
+		
         
 	});
 	describe('Initial Entries', function () {
